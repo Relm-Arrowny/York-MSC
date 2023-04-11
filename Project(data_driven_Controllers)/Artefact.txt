@@ -1,0 +1,36 @@
+
+7.1	Artefacts
+
+The Artefacts are developed using MATLAB R2002b and Simulink, please use R2002b or later version of MATLAB for reproduction of these Artefacts. 
+The three main Artefacts can be found here:
+Cryostat Model in MATLAB format:
+	Artefact\src\CryostatModel\cryostatModel.mat
+MPC Model in MATLAB format:
+	Artefact\src\MPC\MPC.mat
+GAPID tuner:
+	git\Artefact\src\GAPID\gaPID_RUN.m
+To recreate Cryostat model:
+To recreate these models, take the close loop data in “\Artefact\src\data\AutoPIDData\ EM_LS336_pid_autoPID_FullRangeExperiment_C.dat” clean the data using “Artefact\src\dataCorrection\DataCorrection.ipynb”. Import the resulting data into MATLAB’s system identification. Separate the 10K step data into 6 sections using the “select range” function, fit each of section using “process models” with the transfer function defined in the report. Finally export the model to MATLAB workspace.
+To recreate MPC controllers:
+To recreate these controllers, load the cryostat Models into the MATLAB/Simulink and run Artefact\src\MPC\createMPC.m. You will need to change the name of the plant array to match the name of your cryostat Model.
+To test the GAPID tuner:
+Change the model’s name in the script to test different cryostat model and run:
+git\Artefact\src\GAPID\gaPID_RUN.m
+7.1.1	Python controller
+
+To run the controller to collect data, simply setup the cryostat as described in the report and change the Lakeshore IP/EPIC IP address in the script and run it, all the script are located here:
+	Artefact\src\run
+The python code for the controller is located here:
+Artefact\src\Control
+7.2	Data
+
+To generate the data shown in this report run:
+git\Artefact\src\GAPID\ pidSimWithModel.m
+for GAPID and for MPC run:
+	Artefact\src\MPC\setT.m
+APID data is located here:
+	“\Artefact\src\data\AutoPIDData\EM_LS336_pid_autoPID_FullRangeExperiment_C.dat”
+Open loop data can be found here:
+	“\Artefact\src\data\OpenLoop”	
+All the data collected during this project can be found here:
+	\Artefact\src\data

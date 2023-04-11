@@ -1,0 +1,4 @@
+LIBRARY ..\..\..\..\dcsdemo_acc.mexw64
+EXPORTS
+    mexFunction
+    mexfilerequiredapiversion
